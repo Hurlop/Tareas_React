@@ -6,12 +6,24 @@ export function App() {
   //variables
   let loginStatus = false
   let message = ""
+  let users = [
+    {name:"sebas", id:1},
+    {name:"tian", id:2},
+    {name:"dani", id:3},
+  ]
+
   //condiciones
   if(!loginStatus) {
     message = "No has iniciado sesion"
   }else {
     message = "Inicia sesion"
   }
+
+  //Funciones
+  function clickHandler(){
+    alert('Holaaaaa desarrolladores de React')
+  }
+
   return(
     //comentario de js - parte de logica
     //Los fragment son como cajas - pones el contenido del componente y no genera ningun elemento en el DOM
@@ -55,7 +67,36 @@ export function App() {
     <section style={{backgroundColor: "lightblue", padding:"50px"}}>
       <h2 className='titulo'>Anadir Estilos</h2>
       <p>Podemos manejar estilos de varias formas</p>
+      <ol>
+        <li>Estilos en linea con el atributo "Style"</li>
+        <li>Uso de estilos globales - importamos la hoja de estilos</li>
+        <li>Uso de estilos modulares - la trabajamos en cada componente</li>
+      </ol>
       <MyButton/>
+    </section>
+    <hr />
+    <section>
+      <h2>Manejo de eventos y envio de props</h2>
+      <p>Para darle funcionalidad, controlar contenido e interacciones.</p>
+      <p>Las props o propiedades , son parametros que podemos enviar a un componente hijo desde un componente padre - comunicacion entre componentes</p>
+
+      <MyButton text="Boton de saludo" func={clickHandler}/>
+      <MyButton text="Boton de actualizar" />
+      <MyButton text="Boton de eliminar" />
+      <MyButton text="Boton de crear" />
+    </section>
+    <hr />
+    <section>
+      <h2>Renderizado de listas</h2>
+      <p>Podemos mostrar colecciones de datos, sin importar el tamano de dicha coleccion</p>
+      <p>Para recorrer listas en React se usa el metodo <strong>map()</strong> funciona como un ciclo que recorre la lista, pero requiere un identificador <strong>key</strong></p>
+      <ol>
+        {
+          users.map((users) => (
+            <li key={users.id}>{users.name}</li>
+          ))
+        }
+      </ol>
     </section>
     </>
   )
